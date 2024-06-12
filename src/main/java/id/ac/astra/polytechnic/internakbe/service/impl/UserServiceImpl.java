@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
             this.userRepository.save(user);
             return new DtoResponse(200, user, "User created successfully");
         } catch (Exception var3) {
-            return new DtoResponse(500, user, "Failed to create User");
+            return new DtoResponse(500, user, "Failed to create Uaser");
         }
     }
 
