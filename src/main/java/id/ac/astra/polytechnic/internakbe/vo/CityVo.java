@@ -8,7 +8,7 @@ public class CityVo {
     private  Integer prv_id;
 
     public CityVo(City city) {
-        this.cty_id = city.getPrv_id();
+        this.cty_id = city.getCty_id();
         this.cty_name = city.getCty_name();
         this.prv_id = city.getPrv_id();
     }

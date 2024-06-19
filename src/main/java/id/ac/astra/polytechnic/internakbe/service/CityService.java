@@ -8,4 +8,5 @@ public interface CityService {
     DtoResponse getCityActive();
 
     DtoResponse getCityById(Integer cty_id);
+    DtoResponse getCitiesByProvinceId(Integer prv_id);
 }
