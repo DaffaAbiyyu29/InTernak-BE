@@ -8,7 +8,6 @@ import java.util.List;
 public interface UserDao {
 
     List<UserVo> getAllUsers();
-
     List<UserVo> getUserActive();
     UserVo getUserById(Integer userId);
 

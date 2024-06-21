@@ -1,7 +1,12 @@
 package id.ac.astra.polytechnic.internakbe.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(
         name = "ms_user"
@@ -50,21 +55,6 @@ public class User {
             name = "cty_id"
     )
     private Integer cty_id;
-
-    public User() {
-    }
-
-    public User(Integer usr_id, String usr_fullname, String usr_phone, String usr_email, String usr_username, String usr_password, String usr_position, Integer usr_status, Integer cty_id) {
-        this.usr_id = usr_id;
-        this.usr_fullname = usr_fullname;
-        this.usr_phone = usr_phone;
-        this.usr_email = usr_email;
-        this.usr_username = usr_username;
-        this.usr_password = usr_password;
-        this.usr_position = usr_position;
-        this.usr_status = usr_status;
-        this.cty_id = cty_id;
-    }
 
     public Integer getUsr_id() {
         return this.usr_id;

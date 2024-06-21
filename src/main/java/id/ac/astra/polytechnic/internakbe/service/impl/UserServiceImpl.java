@@ -31,6 +31,42 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+    public DtoResponse registerUser(User user){
+        try {
+            String existingEmail = checkEmail(user.getUsr_email());
+            if(user.getUsr_email().equals(existingEmail)){
+                return new DtoResponse(409, existingEmail, "Email Sudah di Gunakan");
+            } else {
+                User newData = new User();
+                newData.setUsr_fullname(user.getUsr_fullname());
+                newData.setCty_id(user.getCty_id());
+//                newData.setNoTelp(user.getNoTelp());
+//                newData.setUsrEmail(user.getUsrEmail());
+//                newData.setUsrNama(user.getUsrNama());
+//                newData.setUsrPassword(user.getUsrPassword());
+//                newData.setUsrStatus("Aktif");
+                userRepository.save(newData);
+                return new DtoResponse(200,user,"Sukses Membuat Data");
+            }
+        }catch (Exception e){
+            return new DtoResponse(500,user,"Terjadi Kesalahan saat menambah data " + e.getMessage());
+        }
+    }
+
+    public DtoResponse getUserByEmailAndPassword(String email, String password){
+        User user = userRepository.findUserByEmailAndPassword(email, password);
+        if(user != null){
+            UserVo loginVo = new UserVo(user);
+            return new DtoResponse(200, loginVo, "Sukses");
+        }else {
+            return new DtoResponse(404, null, "Data User tidak di temukan");
+        }
+    }
+
+    public String checkEmail(String submittedEmail){
+        return userRepository.getExistingEmail(submittedEmail);
+    }
+
     public DtoResponse getAllUsers() {
         return this.userDao.getAllUsers() != null ? new DtoResponse(200, this.userDao.getAllUsers()) : new DtoResponse(200, (Object)null, "No data available");
     }
