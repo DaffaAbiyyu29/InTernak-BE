@@ -10,4 +10,5 @@ public interface tsArticleService {
     DtoResponse deleteArticle(tsArticleVo tsArticle);
     DtoResponse getOther(Integer id);
     DtoResponse getLatest();
+    DtoResponse getAll();
 }

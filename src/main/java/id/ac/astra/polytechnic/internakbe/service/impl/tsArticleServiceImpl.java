@@ -113,4 +113,12 @@ public class tsArticleServiceImpl implements tsArticleService {
         }
         return new DtoResponse(500, null, mEmptyData);
     }
+
+    @Override
+    public DtoResponse getAll() {
+        if(tsArticleDao.getAll() != null) {
+            return new DtoResponse(200, tsArticleDao.getAll());
+        }
+        return new DtoResponse(404, null, mEmptyData);
+    }
 }

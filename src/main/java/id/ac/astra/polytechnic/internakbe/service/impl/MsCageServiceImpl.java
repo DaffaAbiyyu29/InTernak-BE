@@ -38,7 +38,7 @@ public class MsCageServiceImpl implements MsCageService {
 
     @Override
     public DtoResponse saveCage(MsCage msCage) {
-        if(msCage.getCag_name() == null || msCage.getCag_type() == null || msCage.getCty_id() == null || msCage.getCag_capacity() == null || msCage.getCag_status() == null) {
+        if(msCage.getCag_name() == null || msCage.getCag_location() == null || msCage.getCag_type() == null || msCage.getCty_id() == null || msCage.getPrv_id() == null || msCage.getCag_capacity() == null || msCage.getCag_status() == null) {
             return new DtoResponse(500, null, mRequiredData);
         }
         try {

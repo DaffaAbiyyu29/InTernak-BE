@@ -16,7 +16,7 @@ public class tsArticleRest {
 
     @GetMapping("/ts-article/getAll")
     public DtoResponse getCages(){
-        return service.getLatest();
+        return service.getAll();
     }
     @PostMapping("/ts-article/create")
     public DtoResponse create(@RequestBody tsArticleVo tsArticleVo){

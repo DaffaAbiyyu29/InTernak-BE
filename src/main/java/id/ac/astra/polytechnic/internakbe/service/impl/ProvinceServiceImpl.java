@@ -26,7 +26,7 @@ public class ProvinceServiceImpl implements ProvinceService {
     public DtoResponse getAllProvinces() {
         List<ProvinceVo> provinces = provinceDao.getAllProvinces();
         return provinces != null && !provinces.isEmpty() ?
-                new DtoResponse(200, provinces) :
+                new DtoResponse(200, provinces, "Success") :
                 new DtoResponse(200, null, "No data available");
     }
 

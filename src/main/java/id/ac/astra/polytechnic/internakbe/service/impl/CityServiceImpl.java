@@ -1,6 +1,7 @@
 package id.ac.astra.polytechnic.internakbe.service.impl;
 
 import id.ac.astra.polytechnic.internakbe.dao.CityDao;
+import id.ac.astra.polytechnic.internakbe.model.City;
 import id.ac.astra.polytechnic.internakbe.model.Province;
 import id.ac.astra.polytechnic.internakbe.response.DtoResponse;
 import id.ac.astra.polytechnic.internakbe.service.CityService;
@@ -37,12 +38,18 @@ public class CityServiceImpl implements CityService {
     }
 
     public DtoResponse getCityById(Integer cty_id) {
-        List<Province> cities = Collections.singletonList(this.cityDao.getCityById(cty_id));
-        if (cities != null && !cities.isEmpty()) {
-            return new DtoResponse(200, cities, "successfully get user.");
+        City city = this.cityDao.getCityById(cty_id);
+        if (city != null) {
+            return new DtoResponse(200, city, "Successfully retrieved city.");
         } else {
-            return new DtoResponse(200, null, "No data available.");
+            return new DtoResponse(404, null, "No data available.");
         }
     }
 
+    public DtoResponse getCitiesByProvinceId(Integer prv_id) {
+        List<CityVo> cities = cityDao.getCitiesByProvinceId(prv_id);
+        return cities != null && !cities.isEmpty() ?
+                new DtoResponse(200, cities) :
+                new DtoResponse(200, null, "No data available");
+    }
 }
