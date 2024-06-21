@@ -7,7 +7,6 @@ import java.util.List;
 public class UserConstant {
 
     public static List<User> users;
-    public static List<User> usessssssssss;
     public static final String qGetLogin =
             "SELECT * FROM ms_user " +
                     "WHERE usr_email = :email AND usr_password = :password";
